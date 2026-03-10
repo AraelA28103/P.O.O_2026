@@ -8,18 +8,19 @@ function porteroDiital() {
     } else if (edad < 18) {
         alert("Acceso denegado: necesitas ser mayor de edad");
     } else {
-        alert("Error: El nombre no puede estar en blanco")
+        alert("No puede estar en blanco");
     }
 }
 
 // 2. Validador de Nombres
 function validarNombre() {
     let nombre = prompt("Ingresa tu nombre: ");
-    let usuarios = [""];
-    if (nombre.length < 1) {
-        
+    let usuarios = [];
+    if (nombre !== "") {
+        usuarios.push(nombre);
+        alert(`Hola ${usuarios}`);
     } else {
-        
+        alert("Error: El nombre no puede estar en blanco");
     }
 }
 
@@ -34,3 +35,5 @@ function filtroDuplicados() {
         alert("El producto ya está en el inventario");
     }
 }
+
+// 4. Control de Stock Máximo
