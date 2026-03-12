@@ -87,10 +87,8 @@ function formateadorVip() {
     const container = document.getElementById('resultadoContainer6');
     const resultado = document.getElementById('resultado6');
     for (let i = 0; i < asistentes.length; i++) {
-        if (i % 2 === 0) {
-            asistentes += "[VIP]"
-        } else {
-            
+        if (i % 2 === 1) {
+            asistentes[i] += "[VIP]"
         }
     }
     resultado.textContent = `Asistentes: ${asistentes}`;
@@ -109,8 +107,6 @@ function buscadorStock() {
     for (let i = 0; i < bodega.length; i++) {
         if (articuloBuscado.toLowerCase() == bodega[i]) {
             vecesEncontrado++
-        } else {
-            console.log("No encontrado");
         }
     }
     resultado.textContent = `El artículo ${articuloBuscado} se encuentra ${vecesEncontrado} veces en la bodega`;
@@ -120,16 +116,15 @@ function buscadorStock() {
 // 8. Generador de Párrafos de Advertencia
 function generadorAdvertencia() {
     let temperaturas = [22, 24, 28, 35, 21, 38];
-    let temperaturaCritica = "";
-    let parrafo = "";
+    let temperaturaCritica = [];
     const container = document.getElementById('resultadoContainer8');
     const resultado = document.getElementById('resultado8');
+    resultado.textContent = "";
     for (let i = 0; i < temperaturas.length; i++) {
         if (temperaturas[i] > 30) {
             temperaturaCritica = temperaturas[i];
-            parrafo += `¡ALERTA! Temperatura crítica de ${temperaturaCritica}`;
-        } else {
-            
+            resultado.innerHTML += "¡ALERTA! Temperatura crítica de " + temperaturaCritica + " grados.<br>";
         }
     }
+    container.classList.remove('d-none');
 }
