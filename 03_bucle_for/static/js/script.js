@@ -127,4 +127,4 @@ function generadorAdvertencia() {
         }
     }
     container.classList.remove('d-none');
-}
+};
