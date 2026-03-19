@@ -56,10 +56,11 @@ function actualizarPedidos(pedido) {
 function gestionarPedidos() {
     const container = document.getElementById("resultadoContainer3");
     const result = document.getElementById("resultado3");
-    let input = document.getElementById("input3").value;
-    let resultado = actualizarPedidos(input);
+    const input = document.getElementById("input3");
+    let pedido = input.value;
+    let resultado = actualizarPedidos(pedido);
     result.textContent = resultado;
-    input = "";
+    input.value = "";
     container.classList.remove("d-none");
 };
 
@@ -69,23 +70,24 @@ function validadorCodigo(codigoIngresado) {
     let msg = "Código inválido o expirado";
     for (let i = 0; i < codigosValidos.length; i++) {
         if (codigoIngresado == codigosValidos[i]) {
-            msg = "¡Éxito! Código aceptado"
+            return "¡Éxito! Código aceptado";
         } else {
-            alert("Ingresa un código válido");
+            msg
         }
     }
     return msg
-}
+};
 
 function verificarCodigo() {
     const container = document.getElementById("resultadoContainer4");
     const result = document.getElementById("resultado4");
-    let input = document.getElementById("input4").value;
-    let resultado = validadorCodigo(input);
+    const input = document.getElementById("input4");
+    let codigoIngresado = input.value.toUpperCase();
+    let resultado = validadorCodigo(codigoIngresado);
     result.textContent = resultado;
-    input = "";
+    input.value = "";
     container.classList.remove("d-none");
-}
+};
 
 /* Ejercicio 5: Simulador de Cuotas (for)
 Contexto: Un cliente compra un producto y el sistema le genera automáticamente las etiquetas para sus próximas 3 letras de pago.
@@ -97,10 +99,20 @@ En cada vuelta, súmale (+=) a registroPagos el producto y el número de la cuot
 Fuera del ciclo, muestra la variable registroPagos en el textContent del párrafo.
 Limpia el input.
  */
+let registroPagos = "";
+function separarCuotas(ingresoInput) {
+    for (let i = 0; i < 3; i++) {
+        
+    }
+}
 
 function simularCuotas() {
     const container = document.getElementById("resultadoContainer5");
     const result = document.getElementById("resultado5");
-    let input = document.getElementById("input5").value;
-    let resultado = validadorCodigo(input);
+    const input = document.getElementById("input5");
+    let ingresoInput = input.value;
+    let resultado = separarCuotas(ingresoInput);
+    result.textContent = resultado;
+    input.value = "";
+    container.classList.remove("d-none");
 }
