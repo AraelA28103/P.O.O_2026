@@ -44,13 +44,13 @@ function ingresarUrgencia() {
 let entregas = ["Pizza", "Sushi", "Hamburguesa", "Ensalada"];
 function actualizarPedidos(pedido) {
     if (pedido == "despachar") {
-        entregas.shift()
+        entregas.shift();
     } else if (pedido == "cancelar") {
-        entregas.pop()
+        entregas.pop();
     } else {
         alert("Ingresa un valor válido");
     }
-    return `Pedidos pendientes: ${entregas.join(", ")}`
+    return `Pedidos pendientes: ${entregas.join(", ")}`;
 };
 
 function gestionarPedidos() {
@@ -72,10 +72,10 @@ function validadorCodigo(codigoIngresado) {
         if (codigoIngresado == codigosValidos[i]) {
             return "¡Éxito! Código aceptado";
         } else {
-            msg
+            msg;
         }
     }
-    return msg
+    return msg;
 };
 
 function verificarCodigo() {
@@ -89,30 +89,57 @@ function verificarCodigo() {
     container.classList.remove("d-none");
 };
 
-/* Ejercicio 5: Simulador de Cuotas (for)
-Contexto: Un cliente compra un producto y el sistema le genera automáticamente las etiquetas para sus próximas 3 letras de pago.
-Función Principal: Crea simularCuotas().
-Captura el nombre del producto desde el input (ej: "Bicicleta").
-Crea una variable vacía: registroPagos = "";
-Crea un ciclo for que dé exactamente 3 vueltas (del 1 al 3).
-En cada vuelta, súmale (+=) a registroPagos el producto y el número de la cuota (Ej: producto + " - Cuota " + i + " | ").
-Fuera del ciclo, muestra la variable registroPagos en el textContent del párrafo.
-Limpia el input.
- */
-let registroPagos = "";
-function separarCuotas(ingresoInput) {
-    for (let i = 0; i < 3; i++) {
-        
+// Ejercicio 5: Simulador de Cuotas (for)
+function calcularCuotas(valor, cuota) {
+    let registroPagos = "";
+    for (let i = 0; i <= 3; i++) {
+        registroPagos += ` | Cuota ${i} de ${cuota}; ${parseInt(valor / 3)} |`;
     }
-}
+    return registroPagos;
+};
 
 function simularCuotas() {
-    const container = document.getElementById("resultadoContainer5");
+    const producto = document.getElementById("input5-1");
+    let valorProducto = parseInt(producto.value);
+    const cuota = document.getElementById("input5-2");
+    let valorCuota = parseInt(cuota.value);
     const result = document.getElementById("resultado5");
-    const input = document.getElementById("input5");
-    let ingresoInput = input.value;
-    let resultado = separarCuotas(ingresoInput);
+    const container = document.getElementById("resultadoContainer5");
+    let resultado = calcularCuotas(valorProducto, valorCuota);
     result.textContent = resultado;
-    input.value = "";
+    producto.value = "";
+    cuota.value = "";
     container.classList.remove("d-none");
-}
+};
+
+// Ejercicio 6: Filtro de Presupuesto (for e if)
+let vitrina = [2500, 15000, 8000, 30000, 5000];
+let opciones = [];
+function comprobarPresupuesto(presupuesto) {
+    for (let i = 0; i <= vitrina.length; i++) {
+        if (presupuesto >= vitrina[i]) {
+            opciones.push(vitrina[i]);
+        }
+    }
+    if (opciones == "") {
+        return `No te alcanza para nada`;
+    } else {
+        return `Te alcanza para los precios ${opciones.join(", ")}`;
+    }
+};
+
+function filtrarPrecios() {
+    const container = document.getElementById("resultadoContainer6");
+    const result = document.getElementById("resultado6");
+    const input = document.getElementById("input6");
+    let dinero = parseInt(input.value);
+    if (isNaN(dinero)) {
+        alert("Ingresa valores válidos");
+    } else {
+        let resultado = comprobarPresupuesto(dinero);
+        result.textContent = resultado;
+        input.value = "";
+        container.classList.remove("d-none");
+        opciones = [];
+    }
+};
